@@ -1,0 +1,62 @@
+consumes:
+  - application/json
+info:
+  description: Rest API server in Go with Swagger endpoints definition.
+  title: go-rest-api
+  version: 0.1.0
+produces:
+  - application/json
+schemes:
+  - http
+swagger: "2.0"
+paths:
+  /api/{api_version}:
+    get:
+      description: Returns a api version
+      parameters:
+        - name: api_version
+          in: path
+          type: integer
+          required: true
+          description: this is the api version number.
+      responses:
+        200:
+          description: returns the api version
+          schema:
+            type: integer
+        400:
+          description: Invaid character as api version provided
+
+  /users/{user}:
+    get:
+      description: Returns greeting to the user
+      parameters:
+        - name: user
+          in: path
+          type: string
+          required: true
+          description: The name of the user to greet
+      responses:
+        200:
+          description: Returns the greeting to the user
+          schema:
+            type: string
+        400:
+          description: Invalid character in "user" were provided
+
+  /images/{name}:
+    get:
+      description: Returns the Gopher image
+      produces:
+        - image/png
+      parameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: The name of the gopher to display
+      responses:
+        200:
+          description: Returns the Gopher
+          schema:
+            type: file
