@@ -60,3 +60,15 @@ paths:
           description: Returns the Gopher
           schema:
             type: file
+  /:
+    get:
+      operationId: checkHealth
+      produces:
+          - text/plain
+      responses:
+        '200':
+          description: OK message.
+          schema:
+            type: string
+            enum:
+            - OK
